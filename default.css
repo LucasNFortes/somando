@@ -4,7 +4,8 @@
     --main-font: Montserrat;
     --title-font: Chalk;
     --size: clamp(1.5em, 1.5em + 5vw, 3em);
-    --font-size: clamp(1em, 1em + 5vw, 3em);
+    --font-size: clamp(1em, 1em + 1vw, 3em);
+    --main-margin: clamp(0.2em, 0.2em + 1vw, 1em);
 }
 
 @font-face {
@@ -46,7 +47,8 @@ a {
 }
 
 div {
-    margin: 1em;
+    margin: var(--main-margin);
+    color: var(--main-text-color);
 }
 
 h1,
@@ -73,17 +75,33 @@ img {
     align-content: center;
 }
 
-header,
-.menu {
+header {
     color: var(--main-text-color);
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-content: center;
     margin: 0 auto;
 }
 
-.pointer {
-    cursor: pointer;
+.right {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 auto;
 }
 
+.center {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.space-btw {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0 auto;
+}
