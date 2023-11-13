@@ -1,5 +1,3 @@
-// scripts.js
-
 document.getElementById('dailyQuestion').addEventListener('click', function () {
     // Supondo que 'questions.json' esteja no mesmo diretório que este script
     fetch('questions.json')
@@ -25,20 +23,16 @@ const body = document.querySelector("body");
 const rootStyles = document.documentElement.style;
 
 switchBtn.addEventListener("click", function () {
-    var homeIcon = document.getElementById("home-icon");
     var decorIcon = document.getElementById("decor-icon");
     var configIcon = document.getElementById("config-icon");
-    var clockIcon = document.getElementById("clock-icon");
 
 
     if (body.classList.contains("light-mode")) {
         body.classList.remove("light-mode");
         body.classList.add("dark-mode");
 
-        homeIcon.src = "./media/home-white.png";
         decorIcon.src = "./media/decor-white.png";
         configIcon.src = "./media/config-white.png";
-        clockIcon.src = "./media/clock-white.png";
 
         rootStyles.setProperty('--main-text-color', '#A7A6A6');
         rootStyles.setProperty('--main-bg-color', '#262626');
@@ -47,11 +41,8 @@ switchBtn.addEventListener("click", function () {
         body.classList.remove("dark-mode");
         body.classList.add("light-mode");
 
-
-        homeIcon.src = "./media/home.png";
         decorIcon.src = "./media/decor.png";
         configIcon.src = "./media/config.png";
-        clockIcon.src = "./media/clock.png";
 
         rootStyles.setProperty('--main-text-color', '#262626');
         rootStyles.setProperty('--main-bg-color', '#A7A6A6');
@@ -71,14 +62,12 @@ function updateClock() {
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
 
-    var timeString = hours + ":" + minutes;
+    var timeString = "🕓" + hours + ":" + minutes;
 
     document.getElementById("clock").innerText = timeString;
   }
 
   setInterval(updateClock, 1000);
-
-  // Chama a função para exibir o horário atual imediatamente
   updateClock();
 /*-------------------------------------end clock-------------------------------------*/
 
