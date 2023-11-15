@@ -6,6 +6,7 @@
     --size: clamp(1.5em, 1.5em + 5vw, 3em);
     --font-size: clamp(1em, 1em + 1vw, 3em);
     --main-margin: clamp(0.2em, 0.2em + 1vw, 1em);
+    transition: all .3s ease;
 }
 
 @font-face {
@@ -24,6 +25,9 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+}
+
+body {
     background-color: var(--main-bg-color);
 }
 
@@ -54,6 +58,13 @@ div {
 h1,
 h2 {
     font-family: var(--title-font);
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    font-size: small;
 }
 
 button {
