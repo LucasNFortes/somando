@@ -1,186 +1,138 @@
 #daniel {
-    width: clamp(50px, 50px + 5vw, 300px);
-    animation: heartbeat 1.5s ease-in-out infinite both;
-    transition: all 0.3s ease;
+  width: clamp(50px, 50px + 5vw, 300px);
+  animation: heartbeat 1.5s ease-in-out infinite both;
+  transition: all 0.3s ease;
 }
 
-@keyframes heartbeat {
-    from {
-      transform: scale(1);
-      transform-origin: center center;
-      animation-timing-function: ease-out;
-    }
-    10% {
-      transform: scale(0.91);
-      animation-timing-function: ease-in;
-    }
-    17% {
-      transform: scale(0.98);
-      animation-timing-function: ease-out;
-    }
-    33% {
-      transform: scale(0.87);
-      animation-timing-function: ease-in;
-    }
-    45% {
-      transform: scale(1);
-      animation-timing-function: ease-out;
-    }
-  }
-  
+
 
 .form-item p {
-    font-size: small;
+  font-size: small;
 }
 
 #logo {
-    margin: 50px;
+  margin: 50px;
 }
 
 div#form {
-    position: absolute;
-    width: clamp(300px, 1px + 40svw, 1000px);
-    height: clamp(400px, 1px + 40svw, 1000px);
-    height: auto;
-    background-color: var(--main-text-color);
-    margin: auto;
-    border-radius: 5px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  width: clamp(300px, 1px + 40svw, 1000px);
+  height: clamp(400px, 1px + 40svw, 1000px);
+  height: auto;
+  background-color: var(--main-text-color);
+  margin: auto;
+  border-radius: 5px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
 div.form-item {
-    position: relative;
-    display: block;
-    text-align: left;
-    margin-left: 50px;
-    margin-right: 50px;
+  position: relative;
+  display: block;
+  text-align: left;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .formLabel {
-    pointer-events: none;
-    z-index: 0;
-    transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+  transition: all 0.3s ease;
 }
 
 .form-style {
-    color: var(--main-text-color);
-    display: block;
-    height: 50px;
-    border: none;
-    border-radius: 27px;
-    background-color: #fff;
-    font-size: 105%;
-    letter-spacing: .8px;
-    width: 100%;
+  color: var(--main-text-color);
+  display: block;
+  height: 50px;
+  border: none;
+  border-radius: 27px;
+  background-color: #fff;
+  font-size: 105%;
+  letter-spacing: .8px;
+  width: 100%;
 }
 
 input.form-style {
-    padding-left: 20px;
-    margin-top: 30px;    
+  padding-left: 20px;
+  margin-top: 30px;
 }
 
 input:focus {
-    outline: 1px solid #000;
-    box-sizing: border-box;
+  outline: 1px solid #000;
+  box-sizing: border-box;
 }
 
 
 p.formLabel {
-    position: absolute;
-    margin: 10px;
-    padding: 5px;
-    margin-left: 20px;
-    box-sizing: border-box;
+  position: absolute;
+  margin: 10px;
+  padding: 5px;
+  margin-left: 20px;
+  box-sizing: border-box;
 }
 
 /*---------------button---------------*/
 .button {
-    color: #000;
-    float: right;
-    padding: 10px 25px;
-    font-weight: 300;
-    background: #000;
-    cursor: pointer;
-    margin: 30px;
-    font-size: small;
-    color: #fff;
-    border-radius: 27px;
+  color: #000;
+  float: right;
+  padding: 10px 25px;
+  font-weight: 300;
+  background: #000;
+  cursor: pointer;
+  margin: 30px;
+  font-size: small;
+  color: #fff;
+  border-radius: 27px;
 }
 
 .button:hover {
-    color: #000;
-    background-color: #fff;
-    animation: jello-horizontal 0.9s both;
+  color: #000;
+  background-color: #fff;
+  animation: jello-horizontal 0.9s both;
+  transition: all 0.3s ease;
+
 }
 
-@keyframes jello-horizontal {
-    0% {
-      transform: scale3d(1, 1, 1);
-    }
-    30% {
-      transform: scale3d(1.25, 0.75, 1);
-    }
-    40% {
-      transform: scale3d(0.75, 1.25, 1);
-    }
-    50% {
-      transform: scale3d(1.15, 0.85, 1);
-    }
-    65% {
-      transform: scale3d(0.95, 1.05, 1);
-    }
-    75% {
-      transform: scale3d(1.05, 0.95, 1);
-    }
-    100% {
-      transform: scale3d(1, 1, 1);
-    }
-  }
-  
-  
-  
-  
 /*---------------end button---------------*/
 
 h6 {
-    margin-top: 20px;
-    font-size: xx-small;
-    color: #124561;
-    text-decoration: none;
+  margin-top: 20px;
+  font-size: xx-small;
+  color: #124561;
+  text-decoration: none;
 }
 
 h1 {
-    color: var(--main-bg-color);
+  color: var(--main-bg-color);
 }
 
 
 .form-item:focus-within .formLabel {
-    top: -50%;
-    font-size: 80%;
-    background-color: var(--main-text-color);
-    color: #000;
-    outline: none;
-    border: 1px solid var(--main-bg-color);
-    border-radius: 10px;
-    box-sizing: border-box;
-    transition: all 0.3s ease-in;
+  top: -50%;
+  font-size: 80%;
+  background-color: var(--main-text-color);
+  color: #000;
+  outline: none;
+  border: 1px solid var(--main-bg-color);
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in;
 }
 
 .input-focus .formLabel,
-.form-style:not(:placeholder-shown) + .formLabel {
-    top: -50%;
-    font-size: 80%;
-    background-color: var(--main-text-color);
-    border-radius: 10px;
-    color: #000;
-    outline: none;
-    box-sizing: border-box;
-    transition: all 0.3s ease-in;
+.form-style:not(:placeholder-shown)+.formLabel {
+  top: -50%;
+  font-size: 80%;
+  background-color: var(--main-text-color);
+  border-radius: 10px;
+  color: #000;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in;
 }
 
 .form-style::placeholder {
-    color: transparent;
+  color: transparent;
 }
