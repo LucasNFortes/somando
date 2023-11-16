@@ -13,3 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+document.getElementById('password').addEventListener('focus', function () {
+    // Quando o campo de senha está em foco, troca o caminho da imagem
+    document.getElementById('eyes').src = './media/daniel-closed.png';
+});
+
+document.getElementById('password').addEventListener('blur', function () {
+    // Quando o campo de senha perde o foco, volta para o caminho original
+    document.getElementById('eyes').src = './media/daniel-open.png';
+});
