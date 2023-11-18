@@ -11,12 +11,12 @@
 
 @font-face {
     font-family: Chalk;
-    src: url("./fonts/DkCrayonCrumble-ddll.ttf");
+    src: url("../fonts/DkCrayonCrumble-ddll.ttf");
 }
 
 @font-face {
     font-family: Montserrat;
-    src: url("./fonts/Montserrat-VariableFont_wght.ttf");
+    src: url("../fonts/Montserrat-VariableFont_wght.ttf");
 }
 
 * {

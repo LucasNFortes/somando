@@ -2,9 +2,8 @@
   width: clamp(50px, 50px + 5vw, 300px);
   animation: heartbeat 1.5s ease-in-out infinite both;
   transition: all 0.3s ease;
+  filter: drop-shadow(5px 5px 5px #222);
 }
-
-
 
 .form-item p {
   font-size: small;
@@ -21,12 +20,13 @@ div#form {
   height: auto;
   background-color: var(--main-text-color);
   margin: auto;
-  border-radius: 5px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 50px;
+  box-shadow: 5px 5px 10px #0f0f0f,
+    -5px -5px 10px #3d3d3d;
 }
-
 
 div.form-item {
   position: relative;
@@ -52,6 +52,8 @@ div.form-item {
   font-size: 105%;
   letter-spacing: .8px;
   width: 100%;
+  box-shadow:  5px 5px 10px #8e8d8d,
+             -5px -5px 10px #c0bfbf;
 }
 
 input.form-style {
@@ -63,7 +65,6 @@ input:focus {
   outline: 1px solid #000;
   box-sizing: border-box;
 }
-
 
 p.formLabel {
   position: absolute;
@@ -96,6 +97,7 @@ p.formLabel {
 }
 
 /*---------------end button---------------*/
+
 
 h6 {
   margin-top: 20px;

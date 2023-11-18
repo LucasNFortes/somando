@@ -3,7 +3,7 @@
   animation: vibrate-1 0.5s linear both;
 }
 
-@-webkit-keyframes shake {
+@keyframes shake {
   0% {
     -webkit-transform: translate(0);
     transform: translate(0);
@@ -73,7 +73,7 @@
   animation: espalha-h 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
-@-webkit-keyframes espalha-h {
+@keyframes espalha-h {
   0% {
     letter-spacing: -0.5em;
     opacity: 0;
