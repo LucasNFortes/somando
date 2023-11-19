@@ -8,66 +8,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/default.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./css/animations.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/login.css" media="screen" />
+
     <link rel="icon" href="./media/cookie.png" />
     <title>SomaAndo</title>
 
 </head>
 
-<body class="dark-mode">
-    <header>
-        <div class="container">
-            <a href="./store.html"><img class="icon shake" href="./store.html" src="./media/cookie.png"></a>
-        </div>
-        <div>
-            <a href="./index.html">
-                <h1 class="espalha-h pointer">SomAndo</h1>
-            </a>
-        </div>
-
-        <div class="container">
-            <nav class="">
-                <li class="center">
-                    <a href="./decor.html"><img id="decor-icon" class="icon light-mode"
-                            src="./media/decor-white.png"></a>
-                    <a href="./configs.html"><img id="config-icon" class="icon light-mode"
-                            src="./media/config-white.png"></a>
-                    <a><input type="checkbox" id="switch-theme" class="icon switch"></a>
-                </li>
-            </nav>
-        </div>
-    </header>
-
+<body class="">
     <main>
-        <div class="space-btw">
-            <div class="container">
-                <div id="clock"></div>
+        <div class="">
+            <div id="form">
+                <div id="logo" class="container">
+                    <a href="./login.html">
+                        <h1 class="espalha-h pointer">SomAndo</h1>
+                    </a>
+                </div>
+                <div id="daniel" class="center">
+                    <img id="eyes" src="./media/daniel-open.png" alt="desenho de ovo sorrindo">
+                </div>
+                <div class="form-item">
+                    <p class="formLabel">Email/Username</p>
+                    <input type="email" name="email" id="email" class="form-style" autocomplete="off"
+                        placeholder="Email/Username" />
+                </div>
+                <div class="form-item">
+                    <p class="formLabel">Password</p>
+                    <input type="password" name="password" id="password" class="form-style" placeholder="Password" />
+                </div>
+                <div class="form-item">
+                    <p><a href="#">
+                            <h6>Forgot Password?<h6>
+                        </a></p>
+                    <p class=""><a href="#">
+                            <h6>Register<h6>
+                        </a></p>
+                </div>
+                <div>
+                    <a href="#" class="submit button" onclick="handleClientLoad();">
+                        <p>Login</p>
+                    </a>
+
+                </div>
             </div>
-
-            <div class="container">
-                <p>Lucas 🩷 Adriely</p>
-            </div>
-        </div>
-
-        <div class="right">
-            <p class="">Juntos há &nbsp </p>
-            <h2 id="together" class="h2"></h2>
-            <p class=""> &nbsp dias</p>
-        </div>
-
-
-
-        <div class="container">
-            <button id="dailyQuestion">Pergunta do dia</button>
-            <div id="questionContainer"></div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script src="./scripts/scripts.js"></script>
-    <script src="./scripts/clock.js"></script>
-    <script src="./scripts/darkmode.js"></script>
-    <script src="./scripts/supabase.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="./scripts/login.js"></script>
+    <script src="./scripts/googlesheets.js"></script>
+
 </body>
 
 </html>

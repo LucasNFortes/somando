@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/default.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/animations.css" media="screen" />
+    <link rel="icon" href="./media/cookie.png" />
+    <title>SomaAndo</title>
+
+</head>
+
+<body class="dark-mode">
+    <header>
+        <div class="container">
+            <a href="./store.html"><img class="icon shake" href="./store.html" src="./media/cookie.png"></a>
+        </div>
+        <div>
+            <a href="./index.html">
+                <h1 class="espalha-h pointer">SomAndo</h1>
+            </a>
+        </div>
+
+        <div class="container">
+            <nav class="">
+                <li class="center">
+                    <a href="./decor.html"><img id="decor-icon" class="icon light-mode"
+                            src="./media/decor-white.png"></a>
+                    <a href="./configs.html"><img id="config-icon" class="icon light-mode"
+                            src="./media/config-white.png"></a>
+                    <a><input type="checkbox" id="switch-theme" class="icon switch"></a>
+                </li>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="space-btw">
+            <div class="container">
+                <div id="clock"></div>
+            </div>
+
+            <div class="container">
+                <p>Lucas 🩷 Adriely</p>
+            </div>
+        </div>
+
+        <div class="right">
+            <p class="">Juntos há &nbsp </p>
+            <h2 id="together" class="h2"></h2>
+            <p class=""> &nbsp dias</p>
+        </div>
+
+
+
+        <div class="container">
+            <button id="dailyQuestion">Pergunta do dia</button>
+            <div id="questionContainer"></div>
+        </div>
+    </main>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="./scripts/scripts.js"></script>
+    <script src="./scripts/clock.js"></script>
+    <script src="./scripts/darkmode.js"></script>
+    <script src="./scripts/googlesheets.js"></script>
+</body>
+
+</html>
