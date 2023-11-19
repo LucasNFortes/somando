@@ -39,18 +39,54 @@
                 </div>
                 <div class="form-item">
                     <p><a href="#">
-                            <h6>Forgot Password?<h6>
+                            <h6>Esqueceu a senha?<h6>
                         </a></p>
-                    <p class=""><a href="#">
-                            <h6>Register<h6>
+                    <p class=""><a href="#" onclick="openRegistrationForm();">
+                            <h6>Registre-se<h6>
                         </a></p>
                 </div>
+                
+                
                 <div>
                     <a href="#" class="submit button" onclick="handleClientLoad();">
                         <p>Login</p>
                     </a>
-
+                    
                 </div>
+            </div>
+
+            <div id="registrationForm" style="display: none;">
+                <div class="container" style="justify-content: space-between;">
+                    <h1 class="title">Registro</h1>
+                    <a type="button" class="closeWindow" onclick="closeForm();"><h1>X</h1></a>
+                </div>
+
+                <form id="registrationFormFields">
+                    <label for="username">Nome de usuário:</label>
+                    <input type="text" id="username" name="username" class="form-style" pattern="[a-zA-Z0-9]+" required>
+            
+                    <label for="email">Email:</label>
+                    <input type="email" id="newEmail" name="newEmail" class="form-style" required>
+            
+                    <label for="password">Senha:</label>
+                    <input type="password" id="newPassword" name="newPassword" class="form-style" required>
+            
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" class="form-style" required>
+            
+                    <label for="startDate">Data de Início de Namoro:</label>
+                    <input type="text" id="startDate" name="startDate" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/AAAA"
+                        class="form-style" required>
+            
+                    <label for="coupleId">Código do Casal (xxxx):</label>
+                    <input type="text" id="coupleId" name="coupleId" pattern="[a-zA-Z0-9]{4}" maxlength="4" class="form-style" readonly
+                        required>
+                    
+                    <input type="checkbox" id="hasCoupleId" class="hasCoupleId" onchange="toggleCoupleIdInput()">
+                    <label for="hasCoupleId" class="hasCoupleId">Casal já possui um código?</label>
+            
+                    <button type="button" onclick="saveRegistration();">Salvar</button>
+                </form>
             </div>
         </div>
     </main>

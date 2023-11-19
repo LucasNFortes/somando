@@ -30,9 +30,6 @@ function login() {
         const user = values.find((row) => row[2] === emailOrUsername || row[1] === emailOrUsername);
 
         if (user && user[3] === password) {
-            // Login bem-sucedido
-            alert('Login bem-sucedido! Usuário: ' + user[4]);
-
             // Redirecionar para a página index.html
             window.location.href = 'home.html';
         } else {

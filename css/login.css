@@ -135,6 +135,75 @@ h1 {
   transition: all 0.3s ease-in;
 }
 
-.form-style::placeholder {
+#form .form-style::placeholder {
   color: transparent;
 }
+
+
+/*------------------register form------------------*/
+#registrationForm {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: clamp(300px, 1px + 35svw, 1000px);
+  height: clamp(400px, 1px + 35svw, 1000px);
+  margin: auto;
+  height: auto;
+  justify-content: center;
+  z-index: 2;
+  background-color: #f4f4f4;
+  border-radius: 50px;
+  text-align: left;
+  box-shadow:  5px 5px 10px #8e8d8d,
+  -5px -5px 10px #c0bfbf;
+  padding: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+}
+
+#registrationForm input:not(.hasCoupleId),
+#registrationForm select:not(.hasCoupleId) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#registrationForm input {
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+#registrationForm button {
+  color: #000;
+  float: right;
+  padding: 10px 25px;
+  font-weight: 300;
+  background: #000;
+  cursor: pointer;
+  margin: 30px;
+  font-size: small;
+  color: #fff;
+  border-radius: 27px;
+}
+
+#registrationForm button:hover {
+  color: #000;
+  background-color: #fff;
+  animation: jello-horizontal 0.9s both;
+  transition: all 0.3s ease;
+}
+
+label {
+  padding-left: 10px;
+  font-family: var(--main-font);
+}
+
+#registrationForm .closeWindow {
+  cursor: pointer;
+}
+
+#coupleId {
+  text-transform: uppercase;
+}
+/*------------------end register form------------------*/
