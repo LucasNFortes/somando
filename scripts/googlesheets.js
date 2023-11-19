@@ -1,5 +1,5 @@
 const SPREADSHEET_ID = '1NZAIma-QRGWIzcVX1u844vHbVgHKRFca9PSqheWTyzs';
-const API_KEY = 'AIzaSyDWPshf4b2Nt-VGQ_Y2lp_IMaS-QpmjsnU';
+const API_KEY = 'SUA_API_KEY_AQUI';
 const RANGE = 'A1:G20';  //Editar conforme qtd users
 
 function init() {
