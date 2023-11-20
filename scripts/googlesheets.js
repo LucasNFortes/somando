@@ -8,13 +8,16 @@ function init() {
         apiKey: API_KEY,
         discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
     }).then(() => {
-        // Initialization complete, now call the login function
-        login();
+        // Initialization complete, return a promise
+        return Promise.resolve();
     });
 }
 
 function handleClientLoad() {
-    gapi.load('client', init);
+    gapi.load('client', init).then(() => {
+        // Call the login function after initialization is complete
+        login();
+    });
 }
 
 function login() {
