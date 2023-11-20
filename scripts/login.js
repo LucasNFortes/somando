@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 document.addEventListener('DOMContentLoaded', function () {
     const formItems = document.querySelectorAll('.form-item');
 
@@ -32,49 +34,9 @@ document.getElementById('password').addEventListener('blur', function () {
 
 
 /*---------------------------------------------------------------------------------login---------------------------------------------------------------------------------*/
-function init() {
-    gapi.client.init({
-        apiKey: process.env.PRIVATE_KEY.replace(/\\n/g, '\n'),
-        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-    }).then(() => {
-        // Initialization complete, return a promise
-        return Promise.resolve();
-    });
+function login() {
+
 }
-
-function handleClientLoad() {
-    gapi.load('client', init).then(() => {
-        // Call the login function after initialization is complete
-        login();
-    });
-}
-
-async function login() {
-    const emailOrUsername = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-        const auth = await authenticateGoogleSheets();
-        const response = await sheets.spreadsheets.values.get({
-            auth,
-            spreadsheetId: SPREADSHEET_ID,
-            range: RANGE,
-        });
-
-        const values = response.data.values;
-
-        const user = values.find((row) => row[2] === emailOrUsername || row[1] === emailOrUsername);
-
-        if (user && user[3] === password) {
-            window.location.href = 'home.html';
-        } else {
-            alert('Credenciais inválidas. Tente novamente.');
-        }
-    } catch (error) {
-        console.error('Erro ao ler os dados:', error);
-    }
-}
-
 /*---------------------------------------------------------------------------------end login---------------------------------------------------------------------------------*/
 
 
@@ -120,12 +82,6 @@ function toggleCoupleIdInput() {
     }
 }
 
-// Função para gerar um ID único
-function generateUniqueId() {
-    const randomNumber = Math.floor(1000 + Math.random() * 9000); // Gera um número aleatório entre 1000 e 9999
-    return randomNumber.toString();
-}
-
 async function saveRegistration() {
     // Obtenha os valores dos inputs
     const username = document.getElementById('username').value;
@@ -135,24 +91,12 @@ async function saveRegistration() {
     const startDate = document.getElementById('startDate').value;
     const coupleId = document.getElementById('coupleId').value;
 
-    // Crie um objeto com os dados a serem inseridos na planilha
+    // Crie um objeto com os dados a serem inseridos no banco
     const values = [
         [generateUniqueId(), username, email, password, name, startDate, coupleId],
     ];
-
-    // Configuração da autenticação (certifique-se de configurar suas credenciais corretamente)
-    await authenticateGoogleSheets();
-
-    // Use a API do Google Sheets para atualizar a planilha
-    await sheets.spreadsheets.values.append({
-        auth,
-        spreadsheetId: SPREADSHEET_ID,
-        range: 'A2', // Comece a adicionar dados na segunda linha
-        valueInputOption: 'RAW',
-        resource: {
-            values,
-        },
-    });
+    
+    // Lógica para fazer o login
 }
 
 function closeForm() {
