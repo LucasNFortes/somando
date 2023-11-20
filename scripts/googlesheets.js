@@ -1,6 +1,9 @@
-const API_KEY = process.env.RENDER_API_KEY;
-const SPREADSHEET_ID = process.env.RENDER_SPREADSHEET_ID;
+const API_KEY = process.env.PRIVATE_KEY.replace(/\\n/g, '\n');
+const SPREADSHEET_ID = process.env.SPREADSHEET_USERS_ID;
 const RANGE = 'A1:G20';  // Edit as needed based on the number of users
+const { google } = require('googleapis');
+const sheets = google.sheets('v4');
+
 
 function init() {
 
