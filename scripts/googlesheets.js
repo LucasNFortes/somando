@@ -1,6 +1,6 @@
-const SPREADSHEET_ID = '1NZAIma-QRGWIzcVX1u844vHbVgHKRFca9PSqheWTyzs';
-const API_KEY = 'SUA_API_KEY_AQUI';
-const RANGE = 'A1:G20';  //Editar conforme qtd users
+const API_KEY = process.env.RENDER_API_KEY;
+const SPREADSHEET_ID = process.env.RENDER_SPREADSHEET_ID;
+const RANGE = 'A1:G20';  // Edit as needed based on the number of users
 
 function init() {
 
@@ -8,7 +8,7 @@ function init() {
         apiKey: API_KEY,
         discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
     }).then(() => {
-        // Inicialização completa, agora chame a função de login
+        // Initialization complete, now call the login function
         login();
     });
 }
@@ -27,17 +27,17 @@ function login() {
     }).then((response) => {
         const values = response.result.values;
 
-        // Encontrar usuário com o email ou username fornecido
+        // Find the user with the provided email or username
         const user = values.find((row) => row[2] === emailOrUsername || row[1] === emailOrUsername);
 
         if (user && user[3] === password) {
-            // Redirecionar para a página index.html
+            // Redirect to the index.html page
             window.location.href = 'home.html';
         } else {
-            // Credenciais inválidas
-            alert('Credenciais inválidas. Tente novamente.');
+            // Invalid credentials
+            alert('Invalid credentials. Please try again.');
         }
     }).catch((error) => {
-        console.error('Erro ao ler dados:', error);
+        console.error('Error reading data:', error);
     });
 }
