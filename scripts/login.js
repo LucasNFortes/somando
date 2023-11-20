@@ -37,66 +37,66 @@ function openRegistrationForm() {
     generateCoupleCode(); // Chamar a função de geração de código
 }
 
-function saveRegistration() {
-    // Obter os valores dos campos do formulário
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('newEmail').value;
-    const password = document.getElementById('newPassword').value;
-    const nome = document.getElementById('nome').value;
-    const startDate = document.getElementById('startDate').value;
-    const coupleId = document.getElementById('coupleId').value;
+// function saveRegistration() {
+//     // Obter os valores dos campos do formulário
+//     const username = document.getElementById('username').value;
+//     const email = document.getElementById('newEmail').value;
+//     const password = document.getElementById('newPassword').value;
+//     const nome = document.getElementById('nome').value;
+//     const startDate = document.getElementById('startDate').value;
+//     const coupleId = document.getElementById('coupleId').value;
 
-    // Criar objeto com os dados a serem enviados
-    const data = {
-        username: username,
-        email: email,
-        password: password,
-        nome: nome,
-        startDate: startDate,
-        coupleId: coupleId
-    };
+//     // Criar objeto com os dados a serem enviados
+//     const data = {
+//         username: username,
+//         email: email,
+//         password: password,
+//         nome: nome,
+//         startDate: startDate,
+//         coupleId: coupleId
+//     };
 
-    // Enviar solicitação à API do Google Sheets
-    fetch('https://sheets.googleapis.com/v4/spreadsheets/1NZAIma-QRGWIzcVX1u844vHbVgHKRFca9PSqheWTyzs/values/A?valueRenderOption=FORMATTED_VALUE&dateTimeRenderOption=FORMATTED_STRING', {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + 'SUA_API_KEY_AQUI' // Substituir 'SUA_API_KEY_AQUI' pela sua chave de API
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Encontrar o último valor preenchido na coluna A
-            const lastId = data.values.length > 0 ? parseInt(data.values[data.values.length - 1][0]) : 0;
+//     // Enviar solicitação à API do Google Sheets
+//     fetch('https://sheets.googleapis.com/v4/spreadsheets/1NZAIma-QRGWIzcVX1u844vHbVgHKRFca9PSqheWTyzs/values/A?valueRenderOption=FORMATTED_VALUE&dateTimeRenderOption=FORMATTED_STRING', {
+//         method: 'GET',
+//         headers: {
+//             'Authorization': 'Bearer ' + 'SUA_API_KEY_AQUI' // Substituir 'SUA_API_KEY_AQUI' pela sua chave de API
+//         }
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             // Encontrar o último valor preenchido na coluna A
+//             const lastId = data.values.length > 0 ? parseInt(data.values[data.values.length - 1][0]) : 0;
 
-            // Incrementar o último ID para obter o próximo valor
-            const nextId = lastId + 1;
+//             // Incrementar o último ID para obter o próximo valor
+//             const nextId = lastId + 1;
 
-            // Adicionar nextId como o novo valor da coluna A
-            data.values.push([nextId, data.username, data.email, data.password, data.nome, data.startDate, data.coupleCode]);
+//             // Adicionar nextId como o novo valor da coluna A
+//             data.values.push([nextId, data.username, data.email, data.password, data.nome, data.startDate, data.coupleCode]);
 
-            // Enviar solicitação à API do Google Sheets para adicionar os novos dados
-            fetch('https://sheets.googleapis.com/v4/spreadsheets/1NZAIma-QRGWIzcVX1u844vHbVgHKRFca9PSqheWTyzs/values/A1:append?valueInputOption=RAW', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + 'SUA_API_KEY_AQUI' // Substituir 'SUA_API_KEY_AQUI' pela sua chave de API
-                },
-                body: JSON.stringify(data) // Enviar todos os dados em uma única chamada
-            })
-                .then(response => response.json())
-                .then(responseData => {
-                    console.log('Registro salvo com sucesso:', responseData);
-                    alert('Registro salvo com sucesso. Faça login.');
-                    // Adicione aqui qualquer lógica adicional, como fechar o formulário de registro ou redirecionar o usuário
-                })
-                .catch(error => {
-                    console.error('Erro ao salvar registro:', error);
-                });
-        })
-        .catch(error => {
-            console.error('Erro ao obter último valor da coluna A:', error);
-        });
-}
+//             // Enviar solicitação à API do Google Sheets para adicionar os novos dados
+//             fetch('https://sheets.googleapis.com/v4/spreadsheets/1NZAIma-QRGWIzcVX1u844vHbVgHKRFca9PSqheWTyzs/values/A1:append?valueInputOption=RAW', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'Authorization': 'Bearer ' + 'SUA_API_KEY_AQUI' // Substituir 'SUA_API_KEY_AQUI' pela sua chave de API
+//                 },
+//                 body: JSON.stringify(data) // Enviar todos os dados em uma única chamada
+//             })
+//                 .then(response => response.json())
+//                 .then(responseData => {
+//                     console.log('Registro salvo com sucesso:', responseData);
+//                     alert('Registro salvo com sucesso. Faça login.');
+//                     // Adicione aqui qualquer lógica adicional, como fechar o formulário de registro ou redirecionar o usuário
+//                 })
+//                 .catch(error => {
+//                     console.error('Erro ao salvar registro:', error);
+//                 });
+//         })
+//         .catch(error => {
+//             console.error('Erro ao obter último valor da coluna A:', error);
+//         });
+// }
 
 function generateCoupleCode() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

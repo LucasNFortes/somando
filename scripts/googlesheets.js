@@ -3,6 +3,7 @@ const API_KEY = 'SUA_API_KEY_AQUI';
 const RANGE = 'A1:G20';  //Editar conforme qtd users
 
 function init() {
+
     gapi.client.init({
         apiKey: API_KEY,
         discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
