@@ -1,22 +1,3 @@
-document.getElementById('dailyQuestion').addEventListener('click', function () {
-    // Supondo que 'questions.json' esteja no mesmo diretório que este script
-    fetch('questions.json')
-        .then(response => response.json())
-        .then(data => {
-            const questionsData = data.questions;
-
-            // Escolhendo uma pergunta aleatória
-            const randomIndex = Math.floor(Math.random() * questionsData.length);
-            const randomQuestion = questionsData[randomIndex];
-
-            // Atualizando o conteúdo no elemento questionContainer
-            document.getElementById('questionContainer').innerText = randomQuestion;
-        })
-        .catch(error => console.error('Erro ao carregar perguntas:', error));
-});
-
-
-
 /*-------------------------------------together-------------------------------------*/
 function updateTogether() {
     // Data de início para o cálculo

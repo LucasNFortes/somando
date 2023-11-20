@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 document.addEventListener('DOMContentLoaded', function () {
     const formItems = document.querySelectorAll('.form-item');
 
@@ -34,9 +32,46 @@ document.getElementById('password').addEventListener('blur', function () {
 
 
 /*---------------------------------------------------------------------------------login---------------------------------------------------------------------------------*/
-function login() {
 
+// Determina a URL do servidor com base no ambiente
+const serverUrl = process.env.NODE_ENV === 'production'
+    ? 'https://somando.onrender.com/'  // Substitua pelo seu domínio no Render
+    : 'http://localhost:3000';
+
+async function login() {
+    console.log('aaaaaaaaaaaaaaaaaaa');
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch(`${serverUrl}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            console.log('Login bem-sucedido:', result);
+            window.location.href = "home.html";
+        } else {
+            const errorMessage = result.error || result.message || 'Erro desconhecido';
+            console.error('Erro durante o login:', errorMessage);
+            alert('Erro durante o login: ' + errorMessage);
+        }
+    } catch (error) {
+        console.error('Erro inesperado:', error.message);
+        alert('Erro inesperado: ' + error.message);
+    }
 }
+
 /*---------------------------------------------------------------------------------end login---------------------------------------------------------------------------------*/
 
 
@@ -95,8 +130,8 @@ async function saveRegistration() {
     const values = [
         [generateUniqueId(), username, email, password, name, startDate, coupleId],
     ];
-    
-    // Lógica para fazer o login
+
+    // Lógica para salvar o registro
 }
 
 function closeForm() {
