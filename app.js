@@ -1,24 +1,7 @@
-const express = require('express');
-
-const app = express();
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+const express = require("express");
+const path = require("path");
+const app = new express();
+app.use(express.static(path.join(__dirname, "/")));
+app.listen(3000, () => {  
+    console.log("Server running on 3000");
 });
-
-app.listen(3000);
-
-//----------------------------------------------------
-
-const glob = require('glob');
-
-const cssFiles = glob.sync('**/css/*.css');
-const jsFiles = glob.sync('**/scripts/*.js');
-
-for (const file of cssFiles) {
-  require(file);
-}
-
-for (const file of jsFiles) {
-  require(file);
-}
