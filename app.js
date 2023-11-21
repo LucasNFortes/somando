@@ -1,78 +1,3 @@
-// require("dotenv").config();
-// const { supabase } = require('./supabase-init');
-
-// const cors = require("cors");
-// const express = require("express");
-// const path = require("path");
-// const app = express();
-// app.use(express.static(path.join(__dirname, "/")));
-// app.listen(3000, () => {  
-//     console.log("Server running on 3000");
-// });
-
-// app.use(cors());
-
-
-// // supabase-init.js
-// require('dotenv').config();
-// const { createClient } = require('@supabase/supabase-js');
-
-// const supabaseUrl = process.env.SUPABASE_URL;
-// const supabaseKey = process.env.SUPABASE_KEY;
-// const supabase = createClient(supabaseUrl, supabaseKey);
-
-// module.exports = {
-//   supabase,
-// };
-
-
-
-// const button = document.querySelector('.submit.button');
-// button.addEventListener('click', async () => {
-//   // Chama a função login assíncrona
-//   await login();
-// });
-// async function login() {
-//     console.log('aaaaaaaaaaaaaaaaaaa');
-
-//     const emailOrUsername = document.getElementById('email').value;
-//     const password = document.getElementById('password').value;
-
-//     try {
-//         // Fazendo a consulta no Supabase para verificar se o usuário existe
-//         const { data, error } = await supabase
-//             .from('users') // tabela do banco
-//             .select('*')
-//             .eq('email', emailOrUsername) // Verifica se o emailOrUsername corresponde à coluna 'email'
-//             .or('username', 'eq', emailOrUsername) // Ou verifica se o emailOrUsername corresponde à coluna 'username'
-//             .single();
-
-//         if (error) {
-//             console.error('Erro ao buscar usuário:', error.message);
-
-//         } else if (!data) {
-//             console.log('Usuário não encontrado');
-//             alert('Usuário não encontrado');
-
-//         } else if (data.password !== password) {
-//             console.log('Senha incorreta');
-//             alert('Senha incorreta');
-
-//         } else {
-//             console.log('Login bem-sucedido:', data);
-//             window.location.href = "home.html";
-//         }
-//     } catch (error) {
-//         console.error('Erro inesperado:', error.message);
-//     }
-// }
-
-// index.js
-
-// app.js
-
-// app.js (lado do servidor)
-
 const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
@@ -143,5 +68,79 @@ app.post('/login', async (req, res) => {
         console.error('Erro inesperado:', error);
         console.log('Error Stack:', error.stack);
         return res.status(500).json({ error: 'Erro inesperado', details: error });
+    }
+});
+
+
+app.post('/saveRegistration', async (req, res) => {
+    try {
+        const {
+            username,
+            email,
+            password,
+            name,
+            startDate,
+            coupleId
+        } = req.body;
+
+        // Gerar número de ID (4 números aleatórios)
+        const id = Math.floor(1000 + Math.random() * 9000);
+
+        let finalStartDate = startDate;
+
+        if (startDate === 'Parceiro já respondeu'){
+            // Procurar outro usuário com o mesmo coupleId
+            const { data: existingUser, error: existingUserError } = await supabase
+                .from('users')
+                .select('startDate')
+                .eq('coupleId', coupleId)
+                .single();
+
+            if (existingUserError) {
+                console.error('Erro ao buscar usuário existente:', existingUserError.message);
+                return res.status(500).json({
+                    error: 'Erro ao buscar usuário existente',
+                    details: existingUserError
+                });
+            }
+
+            if (existingUser) {
+                // Se encontrar outro usuário com o mesmo coupleId, copiar a startDate
+                finalStartDate = existingUser.startDate;
+            }
+        }
+
+        // Inserir novo registro no banco de dados
+        const { data, error } = await supabase
+            .from('users')
+            .insert([{
+                id,
+                username,
+                email,
+                password,
+                name,
+                startDate: finalStartDate,
+                coupleId
+            }]);
+
+        if (error) {
+            console.error('Erro ao salvar o registro:', error.message);
+            return res.status(500).json({
+                error: 'Erro ao salvar o registro',
+                details: error
+            });
+        }
+
+        console.log('Registro salvo com sucesso:', data);
+        return res.status(200).json({
+            message: 'Registro salvo com sucesso',
+            data
+        });
+    } catch (error) {
+        console.error('Erro inesperado ao salvar o registro:', error);
+        return res.status(500).json({
+            error: 'Erro inesperado ao salvar o registro',
+            details: error
+        });
     }
 });
